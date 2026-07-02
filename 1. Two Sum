@@ -5,6 +5,8 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     
     *returnSize=2;
 
+    //関数の外に配列データを受け渡すために動的配列使用
+    //普通の配列だと関数が終わると破棄される
      // 動的に配列を確保（呼び出し元で free() 必須）
     int* res = (int*)malloc(2 * sizeof(int));
     if (res == NULL) {
