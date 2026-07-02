@@ -1,0 +1,30 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+    
+    *returnSize=2;
+
+     // 動的に配列を確保（呼び出し元で free() 必須）
+    int* res = (int*)malloc(2 * sizeof(int));
+    if (res == NULL) {
+        *returnSize = 0; // メモリ確保失敗
+        return NULL;
+    }
+
+        for(int i=0;i<numsSize;i++){
+            for(int j=i+1;j<numsSize;j++){
+                if(nums[i]+nums[j]==target){
+                    res[0]=i;
+                    res[1]=j;
+                    return res; // 見つかったら即返す
+                }
+            }
+        }
+
+          // 見つからなかった場合
+    free(res);
+    *returnSize = 0;
+    return NULL;
+
+}
